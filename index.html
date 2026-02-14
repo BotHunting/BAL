@@ -116,22 +116,22 @@
                 <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
                     <img src="https://lh3.googleusercontent.com/p/AF1QipPMhfK_f0Dk4NF3vbG_JekKcrSClmHntlAhQCDr=w600"
                         alt="Galeri 1"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer" onclick="openModal(this.src)">
                 </div>
                 <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweptZWnTZQOXjPnqtLsp7fBPj1C3VU5I9cy7ZaCfruhRpbU-o6Qpk3zUlgbW_8t_UXxdtzu-SRXWkFA1mvn3dtpQoSD5tEEWUTVKLIklrDwPc_BMUOw8HW2w21Raby8vuT7te1En=s677-k-no"
                         alt="Galeri 2"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer" onclick="openModal(this.src)">
                 </div>
                 <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerCxso-mWTI-m3e1xsWWkYhKNwGGt2Y9BagSbJAB0MmW1VLKL_yUN33W_pCR6lIIHnwIrbp_IZbX5iz4yXEN_cKF5S5zjjCUbQvLTj16s4rk2l6Yswh5Yj_X2MsE7cde6nCKylzWQ=w203-h270-k-no"
                         alt="Galeri 3"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer" onclick="openModal(this.src)">
                 </div>
                 <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer23VCho9UKgKr4Av5rWSbnWglIoGzv1_W_RGtUupyjQWWoh1chgo3L-qyW7tfSOiBOBhPkgTEtxqotJzsNwwv2z_K8ZU7AuLAXBmrWOdVM6zezJs6AAY8oKiPoJZz-JfUbDjMI=w203-h152-k-no"
                         alt="Galeri 4"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer" onclick="openModal(this.src)">
                 </div>
             </div>
             <div class="mt-12 text-center">
@@ -184,6 +184,28 @@
             <p>&copy; 2026 Bagus Abadi Las. All rights reserved.</p>
         </div>
     </section>
+
+    <!-- Image Modal / Lightbox -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black bg-opacity-90 flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeModal()">
+        <button class="absolute top-6 right-6 text-white text-5xl font-bold hover:text-orange-500 transition duration-300">&times;</button>
+        <img id="modalImage" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl object-contain" src="" alt="Zoomed Image" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = src;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Mencegah scroll pada body saat modal terbuka
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Mengembalikan scroll
+        }
+    </script>
 
 </body>
 
