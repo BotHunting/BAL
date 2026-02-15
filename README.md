@@ -41,7 +41,7 @@ Proyek ini tidak memerlukan proses instalasi atau *build* yang rumit.
 
 1.  **Clone repository ini:**
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/BotHunting/BAL.git
     ```
 
 2.  **Buka file `index.html`:**
