@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id" class="scroll-smooth">
+<html lang="id" class="scroll-smooth scroll-pt-24">
 
 <head>
     <meta charset="UTF-8">
@@ -75,45 +75,95 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
+        /* Custom Scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 antialiased">
 
-    <nav class="bg-slate-900 text-white shadow-lg fixed w-full z-50">
+    <nav class="bg-slate-900/90 backdrop-blur-md text-white shadow-lg fixed w-full z-50 transition-all duration-300 border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center gap-2">
-                    <i class="fa-solid fa-fire-flame-curved text-orange-500 text-3xl"></i>
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg flex items-center justify-center shadow-orange-500/50 shadow-lg">
+                        <i class="fa-solid fa-fire-flame-curved text-white text-xl"></i>
+                    </div>
                     <span class="font-bold text-2xl tracking-wider">BAGUS ABADI <span
-                            class="text-orange-500">LAS</span></span>
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">LAS</span></span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#beranda" class="hover:text-orange-400 transition">Beranda</a>
-                    <a href="#layanan" class="hover:text-orange-400 transition">Layanan</a>
-                    <a href="#galeri" class="hover:text-orange-400 transition">Galeri</a>
-                    <a href="#kontak" class="hover:text-orange-400 transition">Kontak</a>
+                    <a href="#beranda" class="text-sm font-medium hover:text-orange-400 transition relative group">Beranda<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span></a>
+                    <a href="#layanan" class="text-sm font-medium hover:text-orange-400 transition relative group">Layanan<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span></a>
+                    <a href="#galeri" class="text-sm font-medium hover:text-orange-400 transition relative group">Galeri<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-500 transition-all group-hover:w-full"></span></a>
+                    <a href="#kontak" class="text-sm font-medium bg-orange-600 hover:bg-orange-700 px-5 py-2 rounded-full transition shadow-lg shadow-orange-600/30">Hubungi Kami</a>
                 </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+                <a href="#beranda" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-700 hover:text-orange-400 transition" onclick="toggleMobileMenu()">Beranda</a>
+                <a href="#layanan" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-700 hover:text-orange-400 transition" onclick="toggleMobileMenu()">Layanan</a>
+                <a href="#galeri" class="block px-3 py-3 rounded-md text-base font-medium hover:bg-slate-700 hover:text-orange-400 transition" onclick="toggleMobileMenu()">Galeri</a>
+                <a href="#kontak" class="block px-3 py-3 rounded-md text-base font-medium text-orange-400 hover:bg-slate-700 transition" onclick="toggleMobileMenu()">Kontak</a>
             </div>
         </div>
     </nav>
 
     <main>
-    <section id="beranda" class="pt-28 pb-20 bg-slate-800 text-white min-h-[80vh] flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+    <section id="beranda" class="pt-32 pb-20 bg-slate-900 text-white min-h-screen flex items-center relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+            <div class="absolute -top-[10%] -right-[10%] w-[500px] h-[500px] bg-orange-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[10%] -left-[10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center relative z-10">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Solusi Konstruksi Besi <span
-                        class="text-orange-500">Presisi & Kokoh</span></h1>
+                <div class="inline-block px-4 py-1.5 mb-6 border border-orange-500/30 rounded-full bg-orange-500/10 backdrop-blur-sm">
+                    <span class="text-orange-400 text-sm font-semibold tracking-wide uppercase">Bengkel Las Profesional Bogor</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">Solusi Konstruksi <br><span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Besi Presisi</span></h1>
                 <p class="text-gray-300 text-lg mb-8">Melayani pembuatan Kanopi, Pagar, Teralis, dan Konstruksi Baja
                     dengan hasil yang rapi, kuat, dan pengerjaan tepat waktu di wilayah Bogor dan sekitarnya.</p>
-                <a href="#kontak"
-                    class="bg-orange-700 hover:bg-orange-800 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition duration-300">Konsultasi
-                    Gratis <i class="fa-solid fa-arrow-right ml-2"></i></a>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#kontak"
+                        class="bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white font-semibold py-4 px-8 rounded-full shadow-lg shadow-orange-600/30 transition duration-300 text-center">
+                        Konsultasi Gratis <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#galeri"
+                        class="bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/10 text-white font-semibold py-4 px-8 rounded-full transition duration-300 text-center">
+                        Lihat Portofolio
+                    </a>
+                </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <img src="bal.webp" alt="Bagus Abadi Las"
-                    fetchpriority="high" loading="eager" width="704" height="384"
-                    class="w-full max-w-md rounded-2xl shadow-2xl hover:scale-105 transition duration-300">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl blur-lg opacity-30 transform rotate-3"></div>
+                    <img src="bal.webp" alt="Bagus Abadi Las"
+                        fetchpriority="high" loading="eager" width="704" height="384"
+                        class="relative w-full max-w-md rounded-2xl shadow-2xl border border-white/10 hover:scale-[1.02] transition duration-500">
+                </div>
             </div>
         </div>
     </section>
@@ -121,30 +171,30 @@
     <section id="layanan" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Layanan Kami</h2>
-                <div class="w-24 h-1 bg-orange-500 mx-auto rounded"></div>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Layanan Unggulan</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-orange-300 mx-auto rounded-full"></div>
                 <p class="mt-4 text-gray-600">Beragam solusi kebutuhan material besi untuk rumah dan bangunan komersial
                     Anda.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div
-                    class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition duration-300 border-t-4 border-orange-500">
-                    <div class="text-orange-500 text-4xl mb-4"><i class="fa-solid fa-house-chimney"></i></div>
+                    class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-500 text-3xl mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300"><i class="fa-solid fa-house-chimney"></i></div>
                     <h3 class="text-xl font-bold mb-3">Kanopi Premium</h3>
                     <p class="text-gray-600">Pemasangan kanopi minimalis, alderon, spandek, hingga kaca dengan struktur
                         baja ringan atau besi hollow yang kokoh.</p>
                 </div>
                 <div
-                    class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition duration-300 border-t-4 border-slate-900">
-                    <div class="text-slate-900 text-4xl mb-4"><i class="fa-solid fa-door-closed"></i></div>
+                    class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-900 text-3xl mb-6 group-hover:bg-slate-900 group-hover:text-white transition-colors duration-300"><i class="fa-solid fa-door-closed"></i></div>
                     <h3 class="text-xl font-bold mb-3">Pagar & Pintu Besi</h3>
                     <p class="text-gray-600">Desain pagar rumah, pintu gerbang lipat, dorong, dengan finishing anti
                         karat dan cat berkualitas.</p>
                 </div>
                 <div
-                    class="bg-gray-50 rounded-xl p-8 shadow-md hover:shadow-xl transition duration-300 border-t-4 border-orange-500">
-                    <div class="text-orange-500 text-4xl mb-4"><i class="fa-solid fa-border-all"></i></div>
+                    class="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border border-gray-100">
+                    <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-500 text-3xl mb-6 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300"><i class="fa-solid fa-border-all"></i></div>
                     <h3 class="text-xl font-bold mb-3">Teralis & Railing</h3>
                     <p class="text-gray-600">Pengamanan ekstra dengan teralis jendela, railing tangga, dan balkon
                         berdesain estetik modern.</p>
@@ -156,71 +206,87 @@
     <section id="galeri" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Galeri Pekerjaan</h2>
-                <div class="w-24 h-1 bg-orange-500 mx-auto rounded"></div>
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4">Galeri Pekerjaan</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-orange-300 mx-auto rounded-full"></div>
                 <p class="mt-4 text-gray-600">Dokumentasi aktivitas bengkel dan hasil pengerjaan kami.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/p/AF1QipPMhfK_f0Dk4NF3vbG_JekKcrSClmHntlAhQCDr=s2048-v1')">
                     <img src="https://lh3.googleusercontent.com/p/AF1QipPMhfK_f0Dk4NF3vbG_JekKcrSClmHntlAhQCDr=w300-rw"
                         alt="Galeri 1"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/p/AF1QipPMhfK_f0Dk4NF3vbG_JekKcrSClmHntlAhQCDr=s2048-v1')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/p/AF1QipOzI28Xw3ALxQGMXR9ZlVoI933LdULiPPqz6iFQ=s2048-v1')">
                     <img src="https://lh3.googleusercontent.com/p/AF1QipOzI28Xw3ALxQGMXR9ZlVoI933LdULiPPqz6iFQ=w300-rw"
                         alt="Galeri 2"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/p/AF1QipOzI28Xw3ALxQGMXR9ZlVoI933LdULiPPqz6iFQ=s2048-v1')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAweptZWnTZQOXjPnqtLsp7fBPj1C3VU5I9cy7ZaCfruhRpbU-o6Qpk3zUlgbW_8t_UXxdtzu-SRXWkFA1mvn3dtpQoSD5tEEWUTVKLIklrDwPc_BMUOw8HW2w21Raby8vuT7te1En=s1024')">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweptZWnTZQOXjPnqtLsp7fBPj1C3VU5I9cy7ZaCfruhRpbU-o6Qpk3zUlgbW_8t_UXxdtzu-SRXWkFA1mvn3dtpQoSD5tEEWUTVKLIklrDwPc_BMUOw8HW2w21Raby8vuT7te1En=w300-rw"
                         alt="Galeri 3"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAweptZWnTZQOXjPnqtLsp7fBPj1C3VU5I9cy7ZaCfruhRpbU-o6Qpk3zUlgbW_8t_UXxdtzu-SRXWkFA1mvn3dtpQoSD5tEEWUTVKLIklrDwPc_BMUOw8HW2w21Raby8vuT7te1En=s1024')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwerCxso-mWTI-m3e1xsWWkYhKNwGGt2Y9BagSbJAB0MmW1VLKL_yUN33W_pCR6lIIHnwIrbp_IZbX5iz4yXEN_cKF5S5zjjCUbQvLTj16s4rk2l6Yswh5Yj_X2MsE7cde6nCKylzWQ=s1024')">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerCxso-mWTI-m3e1xsWWkYhKNwGGt2Y9BagSbJAB0MmW1VLKL_yUN33W_pCR6lIIHnwIrbp_IZbX5iz4yXEN_cKF5S5zjjCUbQvLTj16s4rk2l6Yswh5Yj_X2MsE7cde6nCKylzWQ=w300-rw"
                         alt="Galeri 4"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwerCxso-mWTI-m3e1xsWWkYhKNwGGt2Y9BagSbJAB0MmW1VLKL_yUN33W_pCR6lIIHnwIrbp_IZbX5iz4yXEN_cKF5S5zjjCUbQvLTj16s4rk2l6Yswh5Yj_X2MsE7cde6nCKylzWQ=s1024')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwer23VCho9UKgKr4Av5rWSbnWglIoGzv1_W_RGtUupyjQWWoh1chgo3L-qyW7tfSOiBOBhPkgTEtxqotJzsNwwv2z_K8ZU7AuLAXBmrWOdVM6zezJs6AAY8oKiPoJZz-JfUbDjMI=s2048-v1')">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwer23VCho9UKgKr4Av5rWSbnWglIoGzv1_W_RGtUupyjQWWoh1chgo3L-qyW7tfSOiBOBhPkgTEtxqotJzsNwwv2z_K8ZU7AuLAXBmrWOdVM6zezJs6AAY8oKiPoJZz-JfUbDjMI=w300-rw"
                         alt="Galeri 5"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwer23VCho9UKgKr4Av5rWSbnWglIoGzv1_W_RGtUupyjQWWoh1chgo3L-qyW7tfSOiBOBhPkgTEtxqotJzsNwwv2z_K8ZU7AuLAXBmrWOdVM6zezJs6AAY8oKiPoJZz-JfUbDjMI=s2048-v1')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/p/AF1QipOht4dF7JJCmR_ElxOwRysdPlQV_h1gUeNy2BoE=s1024-v1')">
                     <img src="https://lh3.googleusercontent.com/p/AF1QipOht4dF7JJCmR_ElxOwRysdPlQV_h1gUeNy2BoE=w300-rw"
                         alt="Galeri 6"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/p/AF1QipOht4dF7JJCmR_ElxOwRysdPlQV_h1gUeNy2BoE=s1024-v1')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwepOTEoXAsff4t5X6qB74n5DimZPEhiH1BnED3tImLNUnxHk_kdqPadaPpjxmg29FQ6HJMLz0VMIi6-N8nVqxT4q5A9244ITBzKPns1eDZlesPg3vgp_kin-SxaiBStN7byzaQk3=s1024-v1')">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepOTEoXAsff4t5X6qB74n5DimZPEhiH1BnED3tImLNUnxHk_kdqPadaPpjxmg29FQ6HJMLz0VMIi6-N8nVqxT4q5A9244ITBzKPns1eDZlesPg3vgp_kin-SxaiBStN7byzaQk3=w300-rw"
                         alt="Galeri 7"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwepOTEoXAsff4t5X6qB74n5DimZPEhiH1BnED3tImLNUnxHk_kdqPadaPpjxmg29FQ6HJMLz0VMIi6-N8nVqxT4q5A9244ITBzKPns1eDZlesPg3vgp_kin-SxaiBStN7byzaQk3=s1024-v1')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
-                <div class="overflow-hidden rounded-xl shadow-lg h-64 group">
+                <div class="overflow-hidden rounded-2xl shadow-lg h-64 group relative cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwerRzjjofbNYYEcAFRP0sOwxmIKov-LlsUPp2NPRF8RF7EY6yAX5My-X9ZefyN-yJ9Znn1RQtAa1HcpWyJoAltYsM1ws7scob-g2ggypxW21V1GiEcAaZaglhvw3ATWUoGe9pRFolg=s3072-v1')">
                     <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerRzjjofbNYYEcAFRP0sOwxmIKov-LlsUPp2NPRF8RF7EY6yAX5My-X9ZefyN-yJ9Znn1RQtAa1HcpWyJoAltYsM1ws7scob-g2ggypxW21V1GiEcAaZaglhvw3ATWUoGe9pRFolg=w300-rw"
                         alt="Galeri 8"
                         loading="lazy"
-                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500 cursor-pointer"
-                        onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHVAwerRzjjofbNYYEcAFRP0sOwxmIKov-LlsUPp2NPRF8RF7EY6yAX5My-X9ZefyN-yJ9Znn1RQtAa1HcpWyJoAltYsM1ws7scob-g2ggypxW21V1GiEcAaZaglhvw3ATWUoGe9pRFolg=s3072-v1')">
+                        class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl"></i>
+                    </div>
                 </div>
             </div>
             <div class="mt-12 text-center">
                 <a href="https://maps.app.goo.gl/s7iX9pR545gTUsvm6" target="_blank"
-                    class="inline-flex items-center bg-white text-slate-900 border-2 border-slate-200 hover:border-orange-500 hover:text-orange-500 font-semibold py-3 px-8 rounded-full transition duration-300 shadow-sm hover:shadow-md">
+                    class="inline-flex items-center bg-white text-slate-900 border border-slate-200 hover:border-orange-500 hover:text-orange-500 font-semibold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl">
                     <i class="fa-brands fa-google mr-2"></i> Lihat Galeri Lengkap & Terbaru
                 </a>
             </div>
@@ -230,13 +296,13 @@
     <section id="kontak" class="bg-slate-900 text-gray-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-                <h3 class="text-2xl font-bold text-white mb-4">Bagus Abadi Las</h3>
+                <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2"><i class="fa-solid fa-fire-flame-curved text-orange-500"></i> Bagus Abadi Las</h3>
                 <p class="mb-4">Kualitas pengelasan rapi, matang, dan tahan lama. Kepuasan Anda adalah prioritas kami.
                 </p>
                 <div class="flex space-x-4">
                     <a href="https://wa.me/6281387680776?text=Halo%20Bagus%20Abadi%20Las,%20saya%20ingin%20bertanya%20tentang%20layanan%20Anda"
-                        target="_blank" aria-label="Chat WhatsApp" class="text-gray-400 hover:text-white transition"><i
-                            class="fa-brands fa-whatsapp text-2xl"></i></a>
+                        target="_blank" aria-label="Chat WhatsApp" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-gray-400 hover:bg-green-600 hover:text-white transition duration-300"><i
+                            class="fa-brands fa-whatsapp text-xl"></i></a>
                     <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white transition"><i
                             class="fa-brands fa-instagram text-2xl"></i></a>
                     <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white transition"><i
@@ -281,6 +347,18 @@
     </div>
 
     <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        function toggleMobileMenu() {
+            menu.classList.add('hidden');
+        }
+
         function openModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
