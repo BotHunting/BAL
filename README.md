@@ -12,12 +12,8 @@ Ganti `your-website.com` dengan link deploy website Anda.
 
 ## 📸 Tampilan
 
-<!-- 
-Sangat disarankan untuk menambahkan screenshot tampilan website di sini. 
-Ganti `link-to-your-image.jpg` dengan link gambar screenshot Anda.
--->
 <p align="center">
-  <img src="link-to-your-image.jpg" alt="Tampilan Website Bagus Abadi Las" width="80%">
+  <a href="https://freeimage.host/i/qJafoF4"><img src="https://iili.io/qJafoF4.md.png" alt="Tampilan Website Bagus Abadi Las" border="0"></a>
 </p>
 
 ## ✨ Fitur Utama
